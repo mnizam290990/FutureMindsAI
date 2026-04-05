@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FutureMinds AI Parent Flyer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: #e8e8e8;
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .flyer {
+    width: 794px;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 48px rgba(0,0,0,0.22);
+  }
+
+  /* ── HERO ─────────────────────────────────── */
+  .hero {
+    background: #0D1B3E;
+    position: relative;
+    overflow: hidden;
+    padding: 32px 36px 24px;
+  }
+  .hero-dots {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 26px 26px;
+    pointer-events: none;
+  }
+  .hero-glow {
+    position: absolute; top: -80px; right: -100px;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(108,59,255,0.3) 0%, transparent 65%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 2; }
+
+  .hero-badge {
+    display: inline-block;
+    background: #6C3BFF;
+    color: #fff;
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 2px;
+    margin-bottom: 12px;
+  }
+  .hero-brand {
+    font-size: 48px; font-weight: 900;
+    color: #fff; line-height: 1;
+    margin-bottom: 6px;
+  }
+  .hero-sub {
+    font-size: 18px; font-weight: 700;
+    color: #00C9A7; margin-bottom: 4px;
+  }
+  .hero-tagline {
+    font-size: 11.5px; color: #8892B0; margin-bottom: 20px;
+  }
+
+  .stats {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .stat {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(108,59,255,0.45);
+    border-radius: 6px; padding: 8px 14px;
+    text-align: center; min-width: 100px;
+  }
+  .stat-val { font-size: 20px; font-weight: 900; color: #FFB800; line-height: 1; }
+  .stat-lbl { font-size: 9px; color: #AABBCC; margin-top: 2px; }
+
+  /* ── BAND ─────────────────────────────────── */
+  .band { height: 5px; background: linear-gradient(90deg, #6C3BFF, #00C9A7); }
+
+  /* ── VIBE CODING SPOTLIGHT ───────────────── */
+  .vibe-spotlight {
+    background: #0D1B3E;
+    margin: 0; padding: 20px 36px 18px;
+    position: relative; overflow: hidden;
+  }
+  .vibe-spotlight::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+    background: linear-gradient(180deg, #6C3BFF, #00C9A7);
+  }
+  .vibe-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 2px;
+    color: #00C9A7; text-transform: uppercase; margin-bottom: 6px;
+  }
+  .vibe-title {
+    font-size: 20px; font-weight: 900;
+    color: #fff; margin-bottom: 10px; line-height: 1.2;
+  }
+  .vibe-title span { color: #FFB800; }
+
+  .vibe-flow {
+    display: flex; align-items: center; gap: 0;
+    margin-bottom: 14px; flex-wrap: nowrap;
+  }
+  .vibe-step {
+    background: #131D40;
+    border: 1px solid #6C3BFF;
+    border-radius: 6px;
+    padding: 8px 12px;
+    text-align: center;
+    flex: 1;
+    min-width: 0;
+  }
+  .vibe-step-num {
+    font-size: 9px; font-weight: 700; color: #6C3BFF;
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+  .vibe-step-text {
+    font-size: 10px; font-weight: 700; color: #fff;
+    margin-top: 2px; line-height: 1.3;
+  }
+  .vibe-arrow {
+    color: #6C3BFF; font-size: 16px; font-weight: 900;
+    padding: 0 4px; flex-shrink: 0;
+  }
+
+  .vibe-projects {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;
+    margin-bottom: 10px;
+  }
+  .vibe-proj {
+    background: #1A2550;
+    border: 1px solid rgba(108,59,255,0.4);
+    border-radius: 6px; padding: 8px 6px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .vibe-proj-icon { font-size: 18px; display: block; margin-bottom: 3px; }
+  .vibe-proj-name { font-size: 9px; font-weight: 700; color: #fff; line-height: 1.3; }
+  .vibe-proj-desc { font-size: 8px; color: #8892B0; margin-top: 2px; line-height: 1.3; }
+
+  .vibe-tools {
+    display: flex; gap: 6px; flex-wrap: wrap; align-items: center;
+  }
+  .vibe-tool-label { font-size: 9px; color: #8892B0; font-weight: 600; margin-right: 2px; }
+  .vibe-tool-badge {
+    background: rgba(108,59,255,0.2);
+    border: 1px solid rgba(108,59,255,0.5);
+    color: #A78BFF;
+    font-size: 9px; font-weight: 700;
+    padding: 3px 9px; border-radius: 20px;
+  }
+
+  /* ── BAND 2 ───────────────────────────────── */
+  .band2 { height: 3px; background: linear-gradient(90deg, #00C9A7, #FFB800); }
+
+  /* ── CONTENT ──────────────────────────────── */
+  .content { padding: 20px 36px; }
+
+  .section-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 2px;
+    color: #6C3BFF; text-transform: uppercase; margin-bottom: 5px;
+  }
+  .section-title {
+    font-size: 18px; font-weight: 800; color: #0D1B3E; margin-bottom: 12px;
+  }
+
+  /* ── DAY CARDS ────────────────────────────── */
+  .days {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;
+    margin-bottom: 18px;
+  }
+  .day-card {
+    border-radius: 8px; overflow: hidden;
+    border: 1px solid #e8e8f0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  }
+  .day-header {
+    padding: 9px 12px; font-size: 11px; font-weight: 800; color: #fff;
+  }
+  .day-header.d1 { background: #6C3BFF; }
+  .day-header.d2 { background: #0D1B3E; }
+  .day-header.d3 { background: #FFB800; color: #0D1B3E; }
+  .day-body { padding: 10px 12px; background: #F8F9FF; }
+  .day-theme { font-size: 10.5px; font-weight: 700; color: #0D1B3E; margin-bottom: 5px; }
+  .day-item {
+    font-size: 9.5px; color: #444466; padding: 2px 0;
+    display: flex; gap: 5px; align-items: flex-start; line-height: 1.4;
+  }
+  .day-item::before { content: ">>"; color: #6C3BFF; flex-shrink: 0; font-size: 8px; margin-top: 1px; font-weight: 700; }
+  .day-item.gold::before { color: #FFB800; }
+  .day-item.teal::before { color: #00C9A7; }
+  .day-highlight {
+    background: #F0EDFF; border-left: 3px solid #6C3BFF;
+    border-radius: 0 4px 4px 0; margin-top: 6px;
+    padding: 5px 8px; font-size: 9px; font-weight: 700; color: #6C3BFF;
+  }
+  .day-highlight.gold { background: #FFFBEA; border-color: #FFB800; color: #B8860B; }
+  .day-highlight.teal { background: #E8FFFC; border-color: #00C9A7; color: #007A66; }
+
+  /* ── TOOLS ROW ────────────────────────────── */
+  .tools {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 7px;
+    margin-bottom: 18px;
+  }
+  .tool {
+    background: #F4F5FF; border-left: 3px solid #6C3BFF;
+    border-radius: 0 6px 6px 0; padding: 7px 10px;
+  }
+  .tool-name { font-size: 10.5px; font-weight: 700; color: #0D1B3E; }
+  .tool-desc { font-size: 9px; color: #8892B0; margin-top: 2px; line-height: 1.3; }
+
+  /* ── TWO COL ──────────────────────────────── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+
+  /* ── AWARDS ───────────────────────────────── */
+  .awards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .award {
+    display: flex; align-items: center; gap: 8px;
+    background: #F4F5FF; border-radius: 6px; padding: 7px 10px;
+  }
+  .award-icon { font-size: 18px; flex-shrink: 0; }
+  .award-name { font-size: 10.5px; font-weight: 700; color: #0D1B3E; }
+  .award-sub { font-size: 8.5px; color: #8892B0; }
+
+  /* ── INFO BOX ─────────────────────────────── */
+  .info-box {
+    background: #0D1B3E; border-radius: 10px;
+    padding: 16px 20px; color: #fff;
+  }
+  .info-row { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+  .info-icon { font-size: 16px; flex-shrink: 0; }
+  .info-label { font-size: 9px; color: #8892B0; }
+  .info-val { font-size: 13px; font-weight: 700; color: #fff; }
+  .info-val.gold { color: #FFB800; font-size: 19px; }
+  .info-val.teal { color: #00C9A7; }
+
+  /* ── CTA ──────────────────────────────────── */
+  .cta {
+    background: linear-gradient(135deg, #6C3BFF, #00C9A7);
+    border-radius: 7px; padding: 12px 16px; text-align: center; margin-top: 10px;
+  }
+  .cta-main { font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 3px; }
+  .cta-sub { font-size: 10px; color: rgba(255,255,255,0.85); }
+
+  /* ── CERT NOTE ────────────────────────────── */
+  .cert-note {
+    background: #FFFBEA; border: 1px solid #FFB800;
+    border-radius: 6px; padding: 8px 12px;
+    font-size: 10px; color: #0D1B3E; margin-top: 10px;
+    display: flex; gap: 8px; align-items: center;
+  }
+
+  /* ── CURRICULUM NOTE ──────────────────────── */
+  .curr-note {
+    background: #F4F5FF; border-left: 4px solid #00C9A7;
+    border-radius: 0 8px 8px 0; padding: 10px 14px;
+    font-size: 10px; color: #0D1B3E; margin-bottom: 0;
+  }
+
+  /* ── FOOTER ───────────────────────────────── */
+  .footer {
+    background: #090F20; padding: 12px 36px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-brand { font-size: 12px; font-weight: 800; color: #fff; }
+  .footer-detail { font-size: 9px; color: #8892B0; margin-top: 2px; }
+  .footer-contact { font-size: 10px; color: #00C9A7; text-align: right; line-height: 1.6; }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .flyer { box-shadow: none; width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="flyer">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-dots"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+      <div class="hero-badge">🌍 International AI Workshop for Kids &nbsp;|&nbsp; Pilot Cohort May 2026</div>
+      <div class="hero-brand">FutureMinds AI</div>
+      <div class="hero-sub">3-Day AI Bootcamp for Children</div>
+      <div class="hero-tagline">Ages 10–16 &nbsp;•&nbsp; Grades 5–10 &nbsp;•&nbsp; 30–50 Students &nbsp;•&nbsp; Vijayawada</div>
+      <div class="stats">
+        <div class="stat"><div class="stat-val">3</div><div class="stat-lbl">Days</div></div>
+        <div class="stat"><div class="stat-val">4 Hrs</div><div class="stat-lbl">Daily Sessions</div></div>
+        <div class="stat"><div class="stat-val">1 App</div><div class="stat-lbl">Built Per Child</div></div>
+        <div class="stat"><div class="stat-val">1 Deck</div><div class="stat-lbl">AI Slide Pitch</div></div>
+        <div class="stat"><div class="stat-val">📜</div><div class="stat-lbl">Certificate</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="band"></div>
+
+  <!-- VIBE CODING SPOTLIGHT -->
+  <div class="vibe-spotlight">
+    <div class="vibe-label">★ Signature Hands-On Experience</div>
+    <div class="vibe-title">Your Child Builds a <span>Real Working App</span> with AI</div>
+
+    <!-- Flow -->
+    <div class="vibe-flow">
+      <div class="vibe-step">
+        <div class="vibe-step-num">Step 1</div>
+        <div class="vibe-step-text">Pick an app idea</div>
+      </div>
+      <div class="vibe-arrow">›</div>
+      <div class="vibe-step">
+        <div class="vibe-step-num">Step 2</div>
+        <div class="vibe-step-text">Describe it to AI in plain English</div>
+      </div>
+      <div class="vibe-arrow">›</div>
+      <div class="vibe-step">
+        <div class="vibe-step-num">Step 3</div>
+        <div class="vibe-step-text">AI writes the code instantly</div>
+      </div>
+      <div class="vibe-arrow">›</div>
+      <div class="vibe-step">
+        <div class="vibe-step-num">Step 4</div>
+        <div class="vibe-step-text">Test, fix and make it their own</div>
+      </div>
+      <div class="vibe-arrow">›</div>
+      <div class="vibe-step" style="border-color:#FFB800;">
+        <div class="vibe-step-num" style="color:#FFB800;">Step 5</div>
+        <div class="vibe-step-text">Present it LIVE on Day 3!</div>
+      </div>
+    </div>
+
+    <!-- Project options -->
+    <div style="font-size:9px;font-weight:700;color:#8892B0;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Kids choose one of these app ideas to build:</div>
+    <div class="vibe-projects">
+      <div class="vibe-proj">
+        <span class="vibe-proj-icon">🧠</span>
+        <div class="vibe-proj-name">Quiz Master Bot</div>
+        <div class="vibe-proj-desc">AI quiz on any topic with score tracker</div>
+      </div>
+      <div class="vibe-proj">
+        <span class="vibe-proj-icon">📖</span>
+        <div class="vibe-proj-name">Story Generator</div>
+        <div class="vibe-proj-desc">Give 3 words, AI writes a story</div>
+      </div>
+      <div class="vibe-proj">
+        <span class="vibe-proj-icon">😊</span>
+        <div class="vibe-proj-name">Mood Detector</div>
+        <div class="vibe-proj-desc">Type how you feel, AI suggests activities</div>
+      </div>
+      <div class="vibe-proj">
+        <span class="vibe-proj-icon">📚</span>
+        <div class="vibe-proj-name">Smart Flashcards</div>
+        <div class="vibe-proj-desc">AI makes study cards from any topic</div>
+      </div>
+      <div class="vibe-proj" style="border-color:#FFB800;">
+        <span class="vibe-proj-icon">💡</span>
+        <div class="vibe-proj-name">My Own Idea</div>
+        <div class="vibe-proj-desc">Child invents something completely new</div>
+      </div>
+    </div>
+
+    <!-- Tools -->
+    <div class="vibe-tools">
+      <span class="vibe-tool-label">AI Tools Used:</span>
+      <span class="vibe-tool-badge">ChatGPT</span>
+      <span class="vibe-tool-badge">Claude</span>
+      <span class="vibe-tool-badge">Gemini</span>
+      <span class="vibe-tool-badge">Gamma.app</span>
+      <span class="vibe-tool-badge">Canva AI</span>
+      <span class="vibe-tool-badge">Google Teachable Machine</span>
+    </div>
+  </div>
+  <div class="band2"></div>
+
+  <!-- MAIN CONTENT -->
+  <div class="content">
+
+    <!-- DAYS -->
+    <div class="section-label" style="margin-top:4px;">What Happens Each Day</div>
+    <div class="section-title">3 Days. Build. Pitch. Win. 🚀</div>
+
+    <div class="days">
+      <div class="day-card">
+        <div class="day-header d1">🧠 Day 1 | May 1 | AI Unlocked</div>
+        <div class="day-body">
+          <div class="day-theme">Morning Theory (2 hrs)</div>
+          <div class="day-item">What is AI? History and how it works</div>
+          <div class="day-item">AI in daily life: Alexa, YouTube, Maps</div>
+          <div class="day-item">Team quiz: Spot the AI!</div>
+          <div class="day-theme" style="margin-top:7px;">Afternoon Hands-On (2 hrs)</div>
+          <div class="day-item teal">Train a real AI model using Google Teachable Machine</div>
+          <div class="day-item teal">Build an image classifier from scratch</div>
+          <div class="day-item teal">Mini showcase to the group</div>
+          <div class="day-highlight teal">Kids go home having trained their first AI</div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header d2">⚙️ Day 2 | May 2 | Vibe Coding Day</div>
+        <div class="day-body">
+          <div class="day-theme">Morning Theory (2 hrs)</div>
+          <div class="day-item">How Machine Learning really works</div>
+          <div class="day-item">AI Ethics: bias, privacy, fairness</div>
+          <div class="day-item">AI careers and global opportunities</div>
+          <div class="day-theme" style="margin-top:7px;">Afternoon Hands-On (2 hrs) ⭐</div>
+          <div class="day-item gold">Choose an app idea and describe it to AI</div>
+          <div class="day-item gold">AI generates the code, child customises it</div>
+          <div class="day-item gold">Test, break, fix and improve the app</div>
+          <div class="day-highlight gold">Kids go home with a working app they built!</div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-header d3">🚀 Day 3 | May 3 | Pitch Day!</div>
+        <div class="day-body">
+          <div class="day-theme">Morning (2 hrs)</div>
+          <div class="day-item">Build AI-powered pitch slide deck</div>
+          <div class="day-item">Design Thinking + pitch coaching</div>
+          <div class="day-item">Mentor feedback and rehearsals</div>
+          <div class="day-theme" style="margin-top:7px;">Afternoon LIVE EVENT (2 hrs) 🏆</div>
+          <div class="day-item gold">Kids pitch live to judges, Shark Tank style</div>
+          <div class="day-item gold"><strong>Parents invited to watch!</strong></div>
+          <div class="day-item gold">Awards and Certificate Ceremony</div>
+          <div class="day-highlight gold">Kids present their AI app to a real audience</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TWO COL -->
+    <div class="two-col">
+      <div>
+        <div class="section-label">Awards and Recognition</div>
+        <div class="section-title" style="font-size:15px;margin-bottom:10px;">Every child wins something 🌟</div>
+        <div class="awards-grid">
+          <div class="award"><div class="award-icon">🥇</div><div><div class="award-name">Best AI Innovator</div><div class="award-sub">Grand Prize: Trophy + Badge</div></div></div>
+          <div class="award"><div class="award-icon">🤝</div><div><div class="award-name">Best Teamwork</div><div class="award-sub">Collaboration Award</div></div></div>
+          <div class="award"><div class="award-icon">💡</div><div><div class="award-name">Most Creative App</div><div class="award-sub">Innovation Award</div></div></div>
+          <div class="award"><div class="award-icon">🎤</div><div><div class="award-name">Best Pitch</div><div class="award-sub">Communication Award</div></div></div>
+          <div class="award" style="grid-column:1/-1"><div class="award-icon">📜</div><div><div class="award-name">AI Explorer Certificate for EVERY participant</div><div class="award-sub">QR-verified digital + physical certificate. Shareable on WhatsApp and LinkedIn.</div></div></div>
+        </div>
+        <div class="cert-note">
+          <span>📸</span>
+          <span>Professional certificate photo delivered to every parent on WhatsApp within 48 hours of the event.</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-label">Event Details</div>
+        <div class="section-title" style="font-size:15px;margin-bottom:10px;">Register before 50 seats fill 🔥</div>
+        <div class="info-box">
+          <div class="info-row">
+            <div class="info-icon">📅</div>
+            <div><div class="info-label">Dates</div><div class="info-val teal">May 1, 2 and 3, 2026</div></div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">🕘</div>
+            <div><div class="info-label">Timing</div><div class="info-val">9:00 AM – 4:00 PM daily</div></div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">📍</div>
+            <div><div class="info-label">Venue</div><div class="info-val">Vijetha Public School, Guntur<br><span style="font-size:10px;color:#8892B0;">School lab, no extra hardware needed</span></div></div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">🎒</div>
+            <div><div class="info-label">Eligibility</div><div class="info-val">Grades 5–10 (Ages 10–16)</div></div>
+          </div>
+          <div class="info-row" style="margin-bottom:0">
+            <div class="info-icon">💰</div>
+            <div><div class="info-label">Fee: All Inclusive</div><div class="info-val gold">₹300 per child</div></div>
+          </div>
+          <div style="font-size:9.5px;color:#8892B0;margin:4px 0 10px 26px;">Includes: Workbook, Certificate, Photo</div>
+          <div class="cta">
+            <div class="cta-main">📲 Register Now: Only 50 Seats!</div>
+            <div class="cta-sub">WhatsApp: [Your Number] &nbsp;|&nbsp; futuremindsai.in</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CURRICULUM NOTE -->
+    <div class="curr-note">
+      <strong>🎓 International Standard:</strong> Aligned to CBSE AI (Code 417), NEP 2020, and global programs like Code.org and MIT Scratch. Children use the same vibe coding techniques used by professional developers worldwide, right here in Vijayawada, at 10% of the cost of international AI camps.
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <div class="footer-brand">FutureMinds AI</div>
+      <div class="footer-detail">Powered by Fifth AI Solutions &nbsp;•&nbsp; Vijayawada, Andhra Pradesh</div>
+      <div class="footer-detail" style="color:#6C3BFF;margin-top:2px;">"Minds that imagine. AI that creates. Futures that matter."</div>
+    </div>
+    <div class="footer-contact">
+      futuremindsai.in<br>
+      hello@futuremindsai.in<br>
+      @FutureMindsAI
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
